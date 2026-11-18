@@ -23,12 +23,12 @@ description: The user's personal figure/slide visual standard (all their machine
 |---|---|---|
 | c1 | 藍 `D1E5F0 8EC4DE 3A93C3 1065AB` | 藍 `E6F2FE 77AADD 0072B2 065D92` |
 | c2 | 紅 `FEDBC7 F6A482 D75F4C B31529` | 橘 `FFEBE5 EE8866 D55E00 944003` |
-| c3 | 金 `F9E6A9 E2C06D C89400 785700` | 黃 `F7F1D2 EEDD88 E69F00 775103` |
+| c3 | 金 `FFF2CC E3C785 BF9000 705300` | 黃 `F7F1D2 EEDD88 E69F00 775103` |
 | c4 | 紫 `E5D4E8 C3A4CF 986EAC 742881` | 霧面粉 `FEEAF0 ECCAD4 984E61 7F405F` |
 | c5 | 綠 `D9F1D5 ADD4A0 5CAE63 1B7939` | 霧面綠 `E7F5E8 A4C0A8 77A48C 3C5F4D` |
 | n | 灰 `E8E8E8 9E9E9E 424242 1B1B1B` | 同左 |
 
-真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改)。A 的金 Light/Dark 是推算值(論文檔只有 Pale/Mid)。
+真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改)。A 的金 Pale/Mid = user 原本的 `FFF2CC`/`BF9000`(2026-11-19 更正,舊值 F9E6A9/C89400 與 user 原檔不符);Light/Dark 是 OKLab 推算值(user 檔案只有 Pale/Mid)。
 
 ## 3. 共通樣式(已寫進 `~/figkit/tex/figstyle.tex`)
 - 字體 **GenSenRounded B**(檔案在 `~/figkit/fonts/`,install.sh 連進 TEXMFHOME 與系統字型;TikZ 需 LuaLaTeX)。
@@ -38,7 +38,7 @@ description: The user's personal figure/slide visual standard (all their machine
 
 ## 4. 色盲:講準,不要誇大
 - 量法:dataviz `validate_palette.js` 的模型(Machado 2009 severity 1.0,OKLab ΔE×100;色盲 ≥8 及格、正常 ≥15)。
-- A 原配色在最嚴重二色視下 藍↔紫 3.6、金↔綠 6.3、紅↔綠 偏低;**只在「顏色是唯一線索」的線/點圖才有問題**(加標籤/線型即可)。user 的有字架構圖已模擬驗證沒問題、色弱朋友也認得出 — **不要說 A「不色盲友善」**。
+- A 原配色在最嚴重二色視下 藍↔紫 3.6、金↔綠 7.2、紅↔綠 偏低;**只在「顏色是唯一線索」的線/點圖才有問題**(加標籤/線型即可)。user 的有字架構圖已模擬驗證沒問題、色弱朋友也認得出 — **不要說 A「不色盲友善」**。
 - B:三色 Light 16.0 / Mid 13.1;用到 5 色時 Light 約 7–12、Pale 幾乎全撞 → 流程圖靠 Mid 框、長條/折線要圖例或直接標籤;Dark 只當字色(c2/c3 Dark 很像)。
 
 ## 5. 驗證習慣
