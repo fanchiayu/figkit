@@ -3,6 +3,7 @@
     P = PALETTES["new"]          # or "original"
     P["c2"]["mid"]               # -> "#D55E00"
     use_style()                  # GenSenRounded B + 1.5pt lines
+    use_style(data=True)         # data plots: 1.0pt axes, 8/9pt text; then style_axes(ax) per axes
 Slots: c1 baseline/general, c2 contribution/Ours, c3 third/reference, c4, c5; n = neutral gray.
 Keep in sync with tex/palette_original.tex / tex/palette_new.tex.
 """
@@ -44,7 +45,21 @@ FONT_PATH = os.environ.get("FIGKIT_FONT") or str(
     Path(__file__).resolve().parents[2] / "fonts" / "GenSenRounded2TW-B.otf")
 
 
-def use_style():
+# ---- data plots (rules: skill/figure-style/SKILL.md §5) ----
+# Baseline / reference method: neutral gray shifted one tier lighter (n.mid 424242 is near-black).
+# Lines/markers use "mid" (9E9E9E); bars use "light" fill (E8E8E8) + "mid" edge.
+BASELINE_GRAY = {"pale": _NEUTRAL["pale"], "light": _NEUTRAL["pale"],
+                 "mid": _NEUTRAL["light"], "dark": _NEUTRAL["mid"]}
+# Scatter marker area factors (multiply `s`) so o / s / ^ look the same size. Measured: at equal `s`
+# matplotlib's square has 1.34x and the triangle 0.67x the ink of the circle; pure equal-area made
+# triangles look too big, so these are the perceptual compromise the user approved.
+MARKER_AREA = {"o": 1.0, "s": 0.88, "^": 1.25}
+AXIS_WIDTH = 1.0      # data-plot spines + ticks (pt); 1.5 / 1.2 were judged too thick
+GRID_COLOR = _NEUTRAL["pale"]
+
+
+def use_style(data=False):
+    """GenSenRounded B + 1.5pt lines. data=True: data-plot defaults (1.0pt axes, 8/9pt text, embeddable fonts)."""
     import matplotlib.pyplot as plt
     from matplotlib import font_manager
     font_manager.fontManager.addfont(FONT_PATH)
@@ -54,3 +69,27 @@ def use_style():
         "xtick.major.width": 1.5, "ytick.major.width": 1.5,
         "lines.solid_capstyle": "round", "lines.solid_joinstyle": "round",
     })
+    if data:
+        plt.rcParams.update({
+            "axes.linewidth": AXIS_WIDTH, "xtick.major.width": AXIS_WIDTH, "ytick.major.width": AXIS_WIDTH,
+            "xtick.major.size": 3.5, "ytick.major.size": 3.5,
+            "font.size": 8, "axes.labelsize": 9, "axes.titlesize": 9,
+            "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
+            "legend.frameon": False,
+            "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 300,
+        })
+
+
+def style_axes(ax, box=False, ygrid=True, xgrid=False, grid_width=0.8):
+    """Data-plot axes: left + bottom spines (box=True: all four) at AXIS_WIDTH, light gray grid behind data.
+    Scatter plots: box=True, xgrid=True, grid_width=0.5."""
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(box)
+    for side in (("left", "bottom", "top", "right") if box else ("left", "bottom")):
+        ax.spines[side].set_linewidth(AXIS_WIDTH)
+        ax.spines[side].set_capstyle("round")
+    if ygrid:
+        ax.yaxis.grid(True, color=GRID_COLOR, linewidth=grid_width)
+    if xgrid:
+        ax.xaxis.grid(True, color=GRID_COLOR, linewidth=grid_width)
+    ax.set_axisbelow(True)

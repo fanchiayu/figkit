@@ -45,5 +45,14 @@ use_style()
 color = PALETTES["new"]["c2"]["mid"]
 ```
 
+Data plots (bars, lines, scatter) follow their own rules (1.0 pt axes, a y axis on every panel, a light grid, Light-fill bars with Mid edges, Mid markers without outlines); see section 5 of `skill/figure-style/SKILL.md`:
+```python
+from figkit import PALETTES, BASELINE_GRAY, MARKER_AREA, use_style, style_axes
+use_style(data=True)                     # 1.0 pt axes, 8/9 pt text, embeddable PDF fonts
+fig, ax = plt.subplots()
+ax.scatter(x, y, s=22 * MARKER_AREA["^"], marker="^", color=PALETTES["original"]["c1"]["mid"], edgecolor="none")
+style_axes(ax, box=True, xgrid=True, grid_width=0.5)   # bars/lines: style_axes(ax)
+```
+
 ## Font
 `fonts/GenSenRounded2TW-B.otf` is GenSenRounded2 TW B by [ButTaiwan](https://github.com/ButTaiwan/gensen-font), licensed under the SIL Open Font License 1.1 (see `fonts/SIL_Open_Font_License_1.1.txt`).
