@@ -1,6 +1,6 @@
 ---
 name: figure-style
-description: The user's personal figure/slide visual standard (all their machines) — two academic palettes (original / new) chosen per batch via an A/B comparison, slide colours, font GenSenRounded B, 1.5pt strokes, rounded arrows, and the ~/figkit tooling (compile_tikz, compare_palettes, python `figkit`). Load BEFORE drawing or styling any figure in any project: academic/paper/thesis figures, TikZ, matplotlib plots, diagrams, flowcharts, architecture figures, bar/line charts, colour choices, slide colours. Triggers also in Chinese: 畫圖、論文圖、學術圖、示意圖、流程圖、架構圖、長條圖、折線圖、配色、顏色、簡報配色、TikZ、matplotlib。
+description: The user's personal figure/slide visual standard (all their machines) — two academic palettes (original / new) chosen per batch via an A/B comparison, slide colours, font GenSenRounded B, 1.5pt strokes, rounded arrows, and the ~/figkit tooling (compile_tikz, compare_palettes, palette_swatches, python `figkit`). Load BEFORE drawing or styling any figure in any project: academic/paper/thesis figures, TikZ, matplotlib plots, diagrams, flowcharts, architecture figures, bar/line charts, colour choices, slide colours. Triggers also in Chinese: 畫圖、論文圖、學術圖、示意圖、流程圖、架構圖、長條圖、折線圖、配色、顏色、簡報配色、TikZ、matplotlib。
 ---
 
 # 使用者的圖面規範(跨電腦通用)
@@ -28,7 +28,7 @@ description: The user's personal figure/slide visual standard (all their machine
 | c5 | 綠 `D9F1D5 ADD4A0 5CAE63 1B7939` | 霧面綠 `E7F5E8 A4C0A8 77A48C 3C5F4D` |
 | n | 灰 `E8E8E8 9E9E9E 424242 1B1B1B` | 同左 |
 
-真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改)。A 的金 Pale/Mid = user 原本的 `FFF2CC`/`BF9000`(2026-11-19 更正,舊值 F9E6A9/C89400 與 user 原檔不符);這組是 Office 金 `FFC000` 的淺 80%/深 25%,Light/Dark 取同家族的淺 60% `FFE699`/深 50% `806000`(user 選的)。黃色不要照其他色的「Light 比 Mid 灰」比例推 — 會變米色。
+真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改,並跑 `palette_swatches ~/figkit/demo/palette_swatches.png` 更新色階圖)。user 要看色階/色碼 → 給 `~/figkit/demo/palette_swatches.png`(純色塊+色碼,不是 demo 示意圖)。A 的金 Pale/Mid = user 原本的 `FFF2CC`/`BF9000`(2026-11-19 更正,舊值 F9E6A9/C89400 與 user 原檔不符);這組是 Office 金 `FFC000` 的淺 80%/深 25%,Light/Dark 取同家族的淺 60% `FFE699`/深 50% `806000`(user 選的)。黃色不要照其他色的「Light 比 Mid 灰」比例推 — 會變米色。
 
 ## 3. 共通樣式(已寫進 `~/figkit/tex/figstyle.tex`)
 - 字體 **GenSenRounded B**(檔案在 `~/figkit/fonts/`,install.sh 連進 TEXMFHOME 與系統字型;TikZ 需 LuaLaTeX)。

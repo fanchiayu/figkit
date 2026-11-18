@@ -23,6 +23,7 @@ echo "[2/5] commands"
 BIN="$HOME/.local/bin"
 link "$REPO/bin/compile_tikz.sh"     "$BIN/compile_tikz"
 link "$REPO/bin/compare_palettes.sh" "$BIN/compare_palettes"
+link "$REPO/bin/palette_swatches.py" "$BIN/palette_swatches"
 case ":$PATH:" in
     *":$BIN:"*) ;;
     *) echo "  NOTE: $BIN is not on PATH. Add to ~/.bashrc:  export PATH=\"\$HOME/.local/bin:\$PATH\"" ;;

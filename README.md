@@ -4,6 +4,13 @@ A personal figure style kit for TikZ and matplotlib: two academic color palettes
 
 ![Both palettes side by side; bottom row simulates deuteranopia (placeholder data)](demo/demo_figure_palette_compare.png)
 
+## Palettes
+Every slot and shade, with hex codes (regenerate with `palette_swatches demo/palette_swatches.png`):
+
+![Swatch chart of both palettes](demo/palette_swatches.png)
+
+The colors are defined in `tex/palette_original.tex`, `tex/palette_new.tex` and `python/figkit/__init__.py`; change both places together.
+
 ## Install
 ```bash
 git clone https://github.com/fanchiayu/figkit.git ~/figkit
@@ -28,6 +35,7 @@ Draw only with the slot colors `c1`–`c5` and `n` (neutral gray). Each comes in
 ```bash
 compile_tikz fig.tex        # -> fig.pdf + fig.png
 compare_palettes fig.tex    # both palettes side by side + colorblind simulation
+palette_swatches [out.png]  # plain swatch chart of both palettes, with hex codes
 ```
 
 matplotlib:

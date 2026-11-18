@@ -5,3 +5,4 @@ __pycache__/
 *.pdf
 *.png
 !demo/demo_figure_palette_compare.png
+!demo/palette_swatches.png
