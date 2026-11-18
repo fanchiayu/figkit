@@ -1,0 +1,46 @@
+% Demo figure written with slot colours only (placeholder content/data).
+% Try:  compare_palettes demo_figure.tex
+\documentclass[border=8pt]{standalone}
+\providecommand{\figpalette}{new}
+\input{figstyle}
+\begin{document}
+\begin{tikzpicture}
+\node[font=\bfseries\large, anchor=west] at (-0.2,1.9) {\paletteName(假資料)};
+% (a) flowchart: Pale fill + Mid border, title in Dark
+\node[font=\bfseries, anchor=west] at (-0.2,1.15) {(a) 流程圖};
+\foreach \s/\lab/\nm [count=\i from 0] in {c1/既有模組/\cOneName, c2/本文方法/\cTwoName, c3/參考/\cThreeName, c4/第 4 類/\cFourName, c5/第 5 類/\cFiveName} {
+  \node[slotbox=\s] (n\i) at (\i*3.3+1.15,0) {{\color{\s dark}\lab}\\[-1pt]{\footnotesize\color{textSub}\nm}};
+}
+\foreach \a/\b in {0/1,1/2,2/3,3/4} \draw[arr] (n\a) -- (n\b);
+% (b) grouped bars: Light tier
+\begin{scope}[shift={(0,-5.4)}]
+  \node[font=\bfseries, anchor=west] at (-0.2,3.7) {(b) 分組長條(Light)};
+  \foreach \y in {0,1,2,3} \draw[gridColor, line width=0.6pt] (0,\y) -- (8.2,\y);
+  \foreach \g/\vals in {0/{3.0,2.2,1.6,2.6,1.3}, 1/{2.4,2.9,2.1,1.5,2.5}, 2/{1.8,2.0,2.7,2.3,1.9}} {
+    \foreach \v [count=\k from 1] in \vals
+      \fill[c\k light] ({0.3+\g*2.75+(\k-1)*0.42},0) rectangle ++(0.36,\v);
+    \node[below, font=\footnotesize] at ({0.3+\g*2.75+1.0},0) {情境 \the\numexpr\g+1\relax};
+  }
+  \draw[black, line width=\strokeW] (0,0) -- (8.2,0);
+\end{scope}
+% (c) lines: Mid tier
+\begin{scope}[shift={(9.6,-5.4)}]
+  \node[font=\bfseries, anchor=west] at (-0.2,3.7) {(c) 折線(Mid)};
+  \foreach \y in {0,1,2,3} \draw[gridColor, line width=0.6pt] (0,\y) -- (6.2,\y);
+  \draw[c1mid, line width=\strokeW, domain=0:6.2, samples=60, smooth] plot (\x,{1.6+0.6*sin(\x*70)});
+  \draw[c2mid, line width=\strokeW, domain=0:6.2, samples=60, smooth] plot (\x,{0.4+0.42*\x+0.2*sin(\x*80)});
+  \draw[c3mid, line width=\strokeW, domain=0:6.2, samples=60, smooth] plot (\x,{0.9+0.35*sin(\x*90+40)+0.2*\x});
+  \draw[c4mid, line width=\strokeW, domain=0:6.2, samples=60, smooth] plot (\x,{2.4-0.25*\x+0.3*sin(\x*60)});
+  \draw[c5mid, line width=\strokeW, domain=0:6.2, samples=60, smooth] plot (\x,{1.2+0.5*cos(\x*60)+0.1*\x});
+  \draw[black, line width=\strokeW] (0,0) -- (6.2,0);
+\end{scope}
+% legend
+\begin{scope}[shift={(0,-6.6)}, font=\footnotesize]
+  \foreach \s/\lab [count=\i from 0] in {c1/既有模組, c2/本文方法, c3/參考, c4/第 4 類, c5/第 5 類} {
+    \draw[\s mid, line width=\strokeW] (\i*3.3,0) -- ++(0.6,0);
+    \fill[\s light] (\i*3.3+0.75,-0.15) rectangle ++(0.3,0.3);
+    \node[anchor=west] at (\i*3.3+1.1,0) {\lab};
+  }
+\end{scope}
+\end{tikzpicture}
+\end{document}

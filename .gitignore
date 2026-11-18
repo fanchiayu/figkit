@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.aux
+*.log
+*.pdf
+*.png
+!demo/demo_figure_palette_compare.png

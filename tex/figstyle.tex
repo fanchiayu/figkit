@@ -1,0 +1,27 @@
+% figstyle.tex — shared academic-figure style (figkit). In a standalone figure's preamble:
+%   \providecommand{\figpalette}{new}      % or: original
+%   \input{figstyle}                       % found anywhere: install.sh links tex/ into TEXMFHOME
+% Then draw with slot colours only (c1..c5 + n, each pale/light/mid/dark) so the palette can be
+% swapped by compare_palettes without touching the figure.  Needs LuaLaTeX (fontspec).
+\usepackage{tikz}
+\usepackage{fontspec}
+% Font file is found through TEXMFHOME/fonts/opentype/figkit (linked by install.sh), no absolute path.
+\setmainfont{GenSenRounded2TW-B.otf}[BoldFont = GenSenRounded2TW-B.otf]
+\usetikzlibrary{arrows.meta,positioning,calc}
+\providecommand{\figpalette}{new}
+\input{palette_\figpalette.tex}
+
+% ---- role map (same for both palettes) ----
+\colorlet{textMain}{black}
+\colorlet{textSub}{black!54}
+\colorlet{arrowColor}{c1dark}
+\colorlet{gridColor}{black!12}
+
+% ---- strokes: boxes / lines / arrows 1.5pt; rounded Stealth tips ----
+\newcommand{\strokeW}{1.5pt}
+\tikzset{
+  every picture/.style={line cap=round, line join=round, font=\small, text=textMain},
+  arr/.style={-{Stealth[round, length=3.6mm, width=3.4mm]}, line width=\strokeW, draw=arrowColor},
+  slotbox/.style={line width=\strokeW, rounded corners=5pt, minimum width=2.3cm, minimum height=1.1cm,
+                  align=center, draw=#1mid, fill=#1pale},
+}
