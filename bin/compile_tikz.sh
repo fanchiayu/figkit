@@ -4,7 +4,7 @@
 # Override with ENGINE=lualatex|pdflatex|xelatex.
 set -euo pipefail
 TEX="${1:?Usage: compile_tikz <figure.tex> [dpi]}"
-DPI="${2:-300}"
+DPI="${2:-600}"   # deliverable PNGs >= 300 dpi at final size; default 600
 [[ -f "$TEX" && "$TEX" == *.tex ]] || { echo "ERROR: not a .tex file: $TEX" >&2; exit 1; }
 DIR="$(cd "$(dirname "$TEX")" && pwd)"
 BASE="$(basename "$TEX" .tex)"

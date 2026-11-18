@@ -33,7 +33,7 @@ TikZ (compiled with LuaLaTeX):
 Draw only with the slot colors `c1`–`c5` and `n` (neutral gray). Each comes in four shades: `pale`, `light`, `mid`, `dark`. Use the `slotbox=c2` style for boxes and `arr` for arrows. For a full example, see `demo/demo_figure.tex`.
 
 ```bash
-compile_tikz fig.tex        # -> fig.pdf + fig.png
+compile_tikz fig.tex [dpi]  # -> fig.pdf + fig.png (default 600 dpi)
 compare_palettes fig.tex    # both palettes side by side + colorblind simulation
 palette_swatches [out.png]  # plain swatch chart of both palettes, with hex codes
 ```

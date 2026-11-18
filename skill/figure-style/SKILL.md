@@ -35,6 +35,7 @@ description: The user's personal figure/slide visual standard (all their machine
 - **框、線段、箭頭 1.5pt**(以最終插入尺寸計;格線不算)。user 曾說「至少 2.5pt」— 那是簡報尺度,在 ~14 cm 圖上太粗,user 看過 1.0–2.5 對照後選 1.5。
 - 箭頭 `-{Stealth[round, length=3.6mm, width=3.4mm]}`,`line cap/join=round`。
 - 圖以最終插入寬度繪製;要縮放就等比例換算 `\strokeW`。
+- **解析度**:交付的點陣圖(PNG/TIFF)以最終插入尺寸計 **≥300 dpi**,預設出 **600 dpi**(線條圖期刊常要 600;`compile_tikz` 與 `use_style(data=True)` 預設都是 600)。PDF 是向量、沒有 dpi 問題 — 用 `pdfimages -list` 確認裡面沒有點陣圖;交付時報 PNG 的 dpi(`PIL Image.info['dpi']`)。
 
 ## 4. 色盲:講準,不要誇大
 - 量法:dataviz `validate_palette.js` 的模型(Machado 2009 severity 1.0,OKLab ΔE×100;色盲 ≥8 及格、正常 ≥15)。
@@ -52,7 +53,7 @@ description: The user's personal figure/slide visual standard (all their machine
 - **散點**:Mid 實心、**不加邊框**(Light 太淡、1.5pt 邊框太重);基準大小 `s≈22`(約 11 cm 寬時),乘 `MARKER_AREA`(圓 1.0/方 0.88/三角 1.25)讓三種看起來一樣大;保留不同形狀當顏色以外的線索。小點用黃 Mid 偏暗時可改亮黃(VO 用過 `E6B000`,色盤外,只限該圖)。
 - **圖例**:多子圖 → 底部共用一個、一行、無框;單圖放空白角落。
 - **重畫既有的圖**:保持原圖子圖長寬比(壓扁成 ~2:1 會讓點擠成一團,比原圖難看)。
-- **輸出**:以最終插入寬度繪製,PDF + PNG,`pdf.fonttype 42`(CID/OpenType 嵌字,非 Type 3);交付時告訴 user 每張的插入寬度(`pdfinfo` 量),圖例文字變長會改寬度。
+- **輸出**:以最終插入寬度繪製,PDF + PNG(PNG 600 dpi,見 §3),`pdf.fonttype 42`(CID/OpenType 嵌字,非 Type 3);交付時告訴 user 每張的插入寬度(`pdfinfo` 量),圖例文字變長會改寬度。
 
 ## 6. 驗證習慣
 畫完一定實際編譯並看 PNG;示意圖裡的數字一律標「假資料」;產物放該專案慣例的產物夾。

@@ -59,7 +59,7 @@ GRID_COLOR = _NEUTRAL["pale"]
 
 
 def use_style(data=False):
-    """GenSenRounded B + 1.5pt lines. data=True: data-plot defaults (1.0pt axes, 8/9pt text, embeddable fonts)."""
+    """GenSenRounded B + 1.5pt lines. data=True: data-plot defaults (1.0pt axes, 8/9pt text, embeddable fonts, 600 dpi PNG)."""
     import matplotlib.pyplot as plt
     from matplotlib import font_manager
     font_manager.fontManager.addfont(FONT_PATH)
@@ -76,7 +76,7 @@ def use_style(data=False):
             "font.size": 8, "axes.labelsize": 9, "axes.titlesize": 9,
             "xtick.labelsize": 8, "ytick.labelsize": 8, "legend.fontsize": 8,
             "legend.frameon": False,
-            "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 300,
+            "pdf.fonttype": 42, "ps.fonttype": 42, "savefig.dpi": 600,   # raster >= 300 dpi rule; 600 default
         })
 
 
