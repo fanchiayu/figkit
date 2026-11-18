@@ -23,12 +23,12 @@ description: The user's personal figure/slide visual standard (all their machine
 |---|---|---|
 | c1 | 藍 `D1E5F0 8EC4DE 3A93C3 1065AB` | 藍 `E6F2FE 77AADD 0072B2 065D92` |
 | c2 | 紅 `FEDBC7 F6A482 D75F4C B31529` | 橘 `FFEBE5 EE8866 D55E00 944003` |
-| c3 | 金 `FFF2CC E3C785 BF9000 705300` | 黃 `F7F1D2 EEDD88 E69F00 775103` |
+| c3 | 金 `FFF2CC FFE699 BF9000 806000` | 黃 `F7F1D2 EEDD88 E69F00 775103` |
 | c4 | 紫 `E5D4E8 C3A4CF 986EAC 742881` | 霧面粉 `FEEAF0 ECCAD4 984E61 7F405F` |
 | c5 | 綠 `D9F1D5 ADD4A0 5CAE63 1B7939` | 霧面綠 `E7F5E8 A4C0A8 77A48C 3C5F4D` |
 | n | 灰 `E8E8E8 9E9E9E 424242 1B1B1B` | 同左 |
 
-真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改)。A 的金 Pale/Mid = user 原本的 `FFF2CC`/`BF9000`(2026-11-19 更正,舊值 F9E6A9/C89400 與 user 原檔不符);Light/Dark 是 OKLab 推算值(user 檔案只有 Pale/Mid)。
+真相來源 = `~/figkit/tex/palette_{original,new}.tex` 與 `~/figkit/python/figkit/__init__.py`(改色兩邊一起改)。A 的金 Pale/Mid = user 原本的 `FFF2CC`/`BF9000`(2026-11-19 更正,舊值 F9E6A9/C89400 與 user 原檔不符);這組是 Office 金 `FFC000` 的淺 80%/深 25%,Light/Dark 取同家族的淺 60% `FFE699`/深 50% `806000`(user 選的)。黃色不要照其他色的「Light 比 Mid 灰」比例推 — 會變米色。
 
 ## 3. 共通樣式(已寫進 `~/figkit/tex/figstyle.tex`)
 - 字體 **GenSenRounded B**(檔案在 `~/figkit/fonts/`,install.sh 連進 TEXMFHOME 與系統字型;TikZ 需 LuaLaTeX)。

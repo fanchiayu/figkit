@@ -1,13 +1,14 @@
 % Palette "original" = the user's thesis/slide palette (≈ ColorBrewer RdBu + PRGn, plus gold).
 % Slots: c1 baseline/general · c2 contribution/Ours · c3 third/reference · c4 · c5 ; n = neutral gray.
 % Gold Pale/Mid = the user's own values FFF2CC / BF9000 (corrected 2026-11-19; was F9E6A9 / C89400).
-% Gold Light/Dark are not in the user's files -> derived in OKLab: Light at 0.44 of Pale->Mid
-% (where c1/c2/c4/c5 Light sit), Dark = Mid + the old Mid->Dark offset.
+% Gold Light/Dark are not in the user's files. Pale/Mid are Office Gold FFC000 lighter 80% / darker 25%,
+% so Light/Dark come from the same family: lighter 60% (FFE699) / darker 50% (806000), user's pick.
+% (An OKLab ramp matching the other slots' chroma ratio gave beige E3C785 -- yellow needs chroma.)
 \def\paletteName{原配色(藍/紅/金/紫/綠)}
 \def\cOneName{藍}\def\cTwoName{紅}\def\cThreeName{金}\def\cFourName{紫}\def\cFiveName{綠}
 \definecolor{c1pale}{HTML}{D1E5F0} \definecolor{c1light}{HTML}{8EC4DE} \definecolor{c1mid}{HTML}{3A93C3} \definecolor{c1dark}{HTML}{1065AB}
 \definecolor{c2pale}{HTML}{FEDBC7} \definecolor{c2light}{HTML}{F6A482} \definecolor{c2mid}{HTML}{D75F4C} \definecolor{c2dark}{HTML}{B31529}
-\definecolor{c3pale}{HTML}{FFF2CC} \definecolor{c3light}{HTML}{E3C785} \definecolor{c3mid}{HTML}{BF9000} \definecolor{c3dark}{HTML}{705300}
+\definecolor{c3pale}{HTML}{FFF2CC} \definecolor{c3light}{HTML}{FFE699} \definecolor{c3mid}{HTML}{BF9000} \definecolor{c3dark}{HTML}{806000}
 \definecolor{c4pale}{HTML}{E5D4E8} \definecolor{c4light}{HTML}{C3A4CF} \definecolor{c4mid}{HTML}{986EAC} \definecolor{c4dark}{HTML}{742881}
 \definecolor{c5pale}{HTML}{D9F1D5} \definecolor{c5light}{HTML}{ADD4A0} \definecolor{c5mid}{HTML}{5CAE63} \definecolor{c5dark}{HTML}{1B7939}
 \definecolor{npale}{HTML}{E8E8E8}  \definecolor{nlight}{HTML}{9E9E9E}  \definecolor{nmid}{HTML}{424242}  \definecolor{ndark}{HTML}{1B1B1B}
